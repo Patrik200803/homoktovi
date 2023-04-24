@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regisztráció</title>
+</head>
+
+<body>
+    <form action="javascript:void(0)">
+        <fieldset>
+            <legend>Regisztráció</legend>
+            <input type="email" name="email" id="mail" placeholder="EMAIL" required><br>
+            <input type="password" name="pass" id="pswd1" placeholder="JELSZÓ" required><br>
+            <input type="password" name="pass" id="pswd2" placeholder="JELSZÓ MEGERŐSÍTÉSE" required><br>
+            <input type="submit" value="Regisztráció" onclick="reg()"><br>
+        </fieldset>
+    </form>
+
+    <p id="hibauzenet"></p>
+
+  <script>
+        function reg() {
+            if (pswd1.value != "" || pswd2.value != "") {
+                if (pswd1.value == pswd2.value) {
+                    if (mail.value != "") {
+                        document.getElementById('hibauzenet').innerHTML = "REGISZTRÁLVA";
+                        localStorage.setItem("email", mail.value);
+                        localStorage.setItem("password", pswd1.value);
+                        setTimeout(tovabb,2000);
+                    }
+                } else {
+                    document.getElementById('hibauzenet').innerHTML = "Jelszó NEM egyező!";
+                }
+            }
+        }
+        function tovabb(){
+            window.open("index.html");
+        }
+
+    </script>
+    </body>
+    </html>
